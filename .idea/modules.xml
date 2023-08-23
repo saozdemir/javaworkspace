@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/collections/collections.iml" filepath="$PROJECT_DIR$/collections/collections.iml" />
+      <module fileurl="file://$PROJECT_DIR$/designpatterns/designpatterns.iml" filepath="$PROJECT_DIR$/designpatterns/designpatterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gui.javafx/gui.javafx.iml" filepath="$PROJECT_DIR$/gui.javafx/gui.javafx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gui.swing/gui.swing.iml" filepath="$PROJECT_DIR$/gui.swing/gui.swing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inputoutput/inputoutput.iml" filepath="$PROJECT_DIR$/inputoutput/inputoutput.iml" />
+      <module fileurl="file://$PROJECT_DIR$/moduletest/moduletest.iml" filepath="$PROJECT_DIR$/moduletest/moduletest.iml" />
+    </modules>
+  </component>
+</project>
