@@ -1,9 +1,12 @@
 package com.sao.pane;
 
 import com.sao.pane.borderpane.PnBorderPane;
+import com.sao.pane.flowpane.PnFlowPane;
 import com.sao.pane.hbox.PnHBox;
+import com.sao.pane.titledpane.PnTitledPane;
 import com.sao.pane.vbox.PnVBox;
 import javafx.scene.Scene;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -23,7 +26,14 @@ public class StgPaneCommon extends Stage {
     //private PnHBox pnCommon = new PnHBox();
 
     /**VBox*/
-    private PnVBox pnCommon = new PnVBox();
+    //private PnVBox pnCommon = new PnVBox();
+
+    /**TitlePane*/
+    //private PnTitledPane pnCommon = new PnTitledPane();
+
+    /**FlowPane*/
+    private PnFlowPane pnCommon = new PnFlowPane();
+
 
     public StgPaneCommon() {
         init();
