@@ -2,6 +2,8 @@ package com.sao.pane;
 
 import com.sao.pane.borderpane.PnBorderPane;
 import com.sao.pane.flowpane.PnFlowPane;
+import com.sao.pane.gridpane.PnGridPane;
+import com.sao.pane.gridpane.PnGridPaneButton;
 import com.sao.pane.hbox.PnHBox;
 import com.sao.pane.titledpane.PnTitledPane;
 import com.sao.pane.vbox.PnVBox;
@@ -32,7 +34,11 @@ public class StgPaneCommon extends Stage {
     //private PnTitledPane pnCommon = new PnTitledPane();
 
     /**FlowPane*/
-    private PnFlowPane pnCommon = new PnFlowPane();
+    //private PnFlowPane pnCommon = new PnFlowPane();
+
+    /**GridPane*/
+    //private PnGridPane pnCommon = new PnGridPane();
+    private PnGridPaneButton pnCommon = new PnGridPaneButton();
 
 
     public StgPaneCommon() {
