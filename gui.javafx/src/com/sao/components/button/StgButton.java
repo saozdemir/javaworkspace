@@ -1,10 +1,11 @@
 package com.sao.components.button;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -19,23 +20,30 @@ import javax.swing.*;
  */
 public class StgButton extends Stage {
     private Button btnOk = new Button("Ok");
+    private ToggleButton btnToggle = new ToggleButton("Switch");
+
+    private RadioButton btnMale = new RadioButton("Male");
+    private RadioButton btnFemale = new RadioButton("Female");
+    private ToggleGroup bgpGender = new ToggleGroup();
 
     public StgButton() {
         init();
     }
 
     private void init() {
-        StackPane pane = new StackPane();
+        HBox pane = new HBox();
 
         initButton();
 
-        pane.getChildren().add(btnOk);
+        btnMale.setToggleGroup(bgpGender);
+        btnFemale.setToggleGroup(bgpGender);
 
+        pane.getChildren().addAll(btnToggle, btnMale, btnFemale, btnOk);
         Scene scene = new Scene(pane, 400, 400);
         this.setTitle("Button Example");
         this.setScene(scene); // Root panel ekleme
-        this.setWidth(100);
-        this.setHeight(200);
+        this.setWidth(400);
+        this.setHeight(400);
         this.show();
     }
 
@@ -45,5 +53,7 @@ public class StgButton extends Stage {
         icon.setFitHeight(24);
         icon.setFitWidth(24);
         btnOk.setGraphic(icon);
+
+
     }
 }
