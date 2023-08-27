@@ -4,8 +4,14 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/collections/collections.iml" filepath="$PROJECT_DIR$/collections/collections.iml" />
       <module fileurl="file://$PROJECT_DIR$/designpatterns/designpatterns.iml" filepath="$PROJECT_DIR$/designpatterns/designpatterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/generics/generics.iml" filepath="$PROJECT_DIR$/generics/generics.iml" />
       <module fileurl="file://$PROJECT_DIR$/gui.javafx/gui.javafx.iml" filepath="$PROJECT_DIR$/gui.javafx/gui.javafx.iml" />
       <module fileurl="file://$PROJECT_DIR$/gui.swing/gui.swing.iml" filepath="$PROJECT_DIR$/gui.swing/gui.swing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure/infrastructure.iml" filepath="$PROJECT_DIR$/infrastructure/infrastructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure.annotation/infrastructure.annotation.iml" filepath="$PROJECT_DIR$/infrastructure.annotation/infrastructure.annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure.bundle/infrastructure.bundle.iml" filepath="$PROJECT_DIR$/infrastructure.bundle/infrastructure.bundle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure.exceptions/infrastructure.exceptions.iml" filepath="$PROJECT_DIR$/infrastructure.exceptions/infrastructure.exceptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/infrastructure.security/infrastructure.security.iml" filepath="$PROJECT_DIR$/infrastructure.security/infrastructure.security.iml" />
       <module fileurl="file://$PROJECT_DIR$/inputoutput/inputoutput.iml" filepath="$PROJECT_DIR$/inputoutput/inputoutput.iml" />
       <module fileurl="file://$PROJECT_DIR$/moduletest/moduletest.iml" filepath="$PROJECT_DIR$/moduletest/moduletest.iml" />
     </modules>
