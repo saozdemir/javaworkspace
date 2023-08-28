@@ -40,6 +40,7 @@ public class StgButton extends Stage {
 
         pane.getChildren().addAll(btnToggle, btnMale, btnFemale, btnOk);
         Scene scene = new Scene(pane, 400, 400);
+
         this.setTitle("Button Example");
         this.setScene(scene); // Root panel ekleme
         this.setWidth(400);
