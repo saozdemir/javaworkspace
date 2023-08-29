@@ -4,6 +4,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -21,6 +23,7 @@ import javafx.stage.Stage;
  */
 public class StgList extends Stage {
     private Label lblDuty = new Label("Seçilen: -");
+    private Label lblHeader = new Label("GÖREVLER");
     private ListView<Duty> lstDuty;
     private ObservableList<Duty> lstModel = FXCollections.observableArrayList(DutyVirtualDB.dutyList);
 
@@ -40,11 +43,13 @@ public class StgList extends Stage {
         VBox paneList = new VBox();
         lstDuty = new ListView<Duty>(lstModel);
 
-        paneList.getChildren().add(lstDuty);
+        //lstDuty.setOrientation(Orientation.HORIZONTAL);
+
+        paneList.setAlignment(Pos.CENTER);
+        paneList.getChildren().addAll(lblHeader, lstDuty);
 
         pane.setTop(lblDuty);
         pane.setCenter(paneList);
-
         Scene scene = new Scene(pane, 400, 400);
         this.setTitle("List Example");
         this.setScene(scene);
