@@ -1,8 +1,8 @@
-package com.sao.components.list;
+package com.sao.components.list.listbasic;
 
 /**
  * @author saozd
- * @project com.sao.components.list javaworkspace
+ * @project com.sao.components.list.listbasic javaworkspace
  * @date 27.08.2023 Ağu 2023
  * <p>
  * @description:

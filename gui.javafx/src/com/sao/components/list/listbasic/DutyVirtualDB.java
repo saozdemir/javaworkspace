@@ -1,11 +1,11 @@
-package com.sao.components.list;
+package com.sao.components.list.listbasic;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author saozd
- * @project com.sao.components.list javaworkspace
+ * @project com.sao.components.list.listbasic javaworkspace
  * @date 28.08.2023 Ağu 2023
  * <p>
  * @description:

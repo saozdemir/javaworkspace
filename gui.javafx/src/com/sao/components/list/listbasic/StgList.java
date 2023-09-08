@@ -1,22 +1,20 @@
-package com.sao.components.list;
+package com.sao.components.list.listbasic;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
  * @author saozd
- * @project com.sao.components.list javaworkspace
+ * @project com.sao.components.list.listbasic javaworkspace
  * @date 28.08.2023 Ağu 2023
  * <p>
  * @description:
