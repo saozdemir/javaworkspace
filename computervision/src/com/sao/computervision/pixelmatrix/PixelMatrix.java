@@ -10,11 +10,10 @@ import org.opencv.imgcodecs.Imgcodecs;
  * @project com.sao.computervision.pixelmatrix javaworkspace
  * @date 19.10.2023 Eki 2023
  * <p>
- * @description:
- * @git:
+ * @description: 100x100 px çözünürlüğe sahip görüntünün OpenCV kütüphanesi ile RGB matrisini yazdıran uygulama.
+ * @gitRepo: {https://github.com/saozdemir/javaworkspace/tree/master/computervision}
  */
 public class PixelMatrix {
-
     public static void main(String[] args) {
         System.out.println("--- Bilgisayarlı Görü ---");
         loadOpenCvLibrary();
