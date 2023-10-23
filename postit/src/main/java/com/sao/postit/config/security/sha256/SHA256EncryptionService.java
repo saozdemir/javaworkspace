@@ -1,8 +1,7 @@
-package com.sao.postit.config.security;
+package com.sao.postit.config.security.sha256;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * @author saozd
@@ -10,11 +9,11 @@ import java.security.NoSuchAlgorithmException;
  * 7.06.2023 Haz 2023
  * SHA-256 Encryption Algorithm
  */
-public class PasswordEncryptionService {
-    private static PasswordEncryptionService service;
+public class SHA256EncryptionService{
+    private static SHA256EncryptionService service;
     MessageDigest digest;
 
-    private PasswordEncryptionService() throws Exception {
+    private SHA256EncryptionService() throws Exception {
         createDigest();
     }
 
@@ -22,11 +21,11 @@ public class PasswordEncryptionService {
         digest = MessageDigest.getInstance("SHA-256");
     }
 
-    public static PasswordEncryptionService getService() throws Exception {
+    public static SHA256EncryptionService getService() throws Exception {
         if (service == null) {
-            synchronized (DataEncryptionService.class) {
+            synchronized (SHA256EncryptionService.class) {
                 if (service == null) {
-                    service = new PasswordEncryptionService();
+                    service = new SHA256EncryptionService();
                 }
             }
         }

@@ -1,9 +1,8 @@
-package com.sao.postit.config.security;
+package com.sao.postit.config.security.aes;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 /**
@@ -12,11 +11,11 @@ import java.util.Base64;
  * 7.06.2023 Haz 2023
  * AES Encryption Algorithm
  */
-public class DataEncryptionService {
-    private static DataEncryptionService service;
+public class AesEncryptionService {
+    private static AesEncryptionService service;
     private SecretKeySpec secretKey;
 
-    private DataEncryptionService() throws Exception {
+    private AesEncryptionService() throws Exception {
         createKey();
     }
 
@@ -26,11 +25,11 @@ public class DataEncryptionService {
         secretKey = (SecretKeySpec) keyGenerator.generateKey();
     }
 
-    public static DataEncryptionService getService() throws Exception {
+    public static AesEncryptionService getService() throws Exception {
         if (service == null) {
-            synchronized (DataEncryptionService.class) {
+            synchronized (AesEncryptionService.class) {
                 if (service == null) {
-                    service = new DataEncryptionService();
+                    service = new AesEncryptionService();
                 }
             }
         }

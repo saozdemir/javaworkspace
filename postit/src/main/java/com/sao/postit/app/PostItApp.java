@@ -1,19 +1,13 @@
 package com.sao.postit.app;
 
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.sao.postit.config.database.DatabaseService;
-import com.sao.postit.config.security.DataEncryptionService;
-import com.sao.postit.config.security.PasswordEncryptionService;
+import com.sao.postit.config.security.aes.AesEncryptionService;
+import com.sao.postit.config.security.bcrypt.BcryptEncryptionService;
+import com.sao.postit.config.security.sha256.SHA256EncryptionService;
 import com.sao.postit.model.dto.Team;
 import com.sao.postit.model.dto.User;
-import com.sao.postit.view.password.FrmPassword;
-import org.hibernate.boot.archive.scan.internal.ScanResultImpl;
+import org.mindrot.bcrypt.BCrypt;
 
-import javax.crypto.*;
-import javax.swing.*;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 /**
@@ -39,7 +33,33 @@ public class PostItApp {
         //insertUpdateChecker(); pass
         //listChecker(); pass
 
-        securityChecker();
+        try {
+            securityChecker();
+            passwordCheckerBcrypt();
+        } catch (Exception e) {
+            System.out.println("Şifre kontrollerinde hata");
+            e.printStackTrace();
+        }
+
+    }
+
+    private static void passwordCheckerBcrypt() throws Exception {
+        //Bcrypt ile sadece kullanıcı adı kontrolleri yapılacak
+        String password1 = "Ahmet123";
+
+        String encryptedPassword1DB = BcryptEncryptionService.getService().encryptPassword(password1);
+        System.out.println(encryptedPassword1DB);
+
+        String password2 = "Ahmet123";
+
+        if(BcryptEncryptionService.getService().checkPassword(password2,encryptedPassword1DB)){
+            System.out.println(BcryptEncryptionService.getService().encryptPassword(password2));
+            System.out.println("Eşleşti");
+        } else{
+            System.out.println("Eşleşmedi");
+        }
+
+
 
     }
 
@@ -47,10 +67,10 @@ public class PostItApp {
         String message = "Yeni bir mesaj içeriği için yazılmış";
 
         try {
-            String encryptedMessage = DataEncryptionService.getService().encrypt(message);
+            String encryptedMessage = AesEncryptionService.getService().encrypt(message);
             System.out.println(encryptedMessage);
 
-            String decryptedMessage = DataEncryptionService.getService().decrypt(encryptedMessage);
+            String decryptedMessage = AesEncryptionService.getService().decrypt(encryptedMessage);
             System.out.println(decryptedMessage);
 
         } catch (Exception e) {
@@ -62,14 +82,14 @@ public class PostItApp {
         String password3 = "Deneme123";
 
         try {
-            System.out.println(PasswordEncryptionService.getService().encryptPassword(password1));
-            System.out.println(PasswordEncryptionService.getService().encryptPassword(password2));
-            System.out.println(PasswordEncryptionService.getService().encryptPassword(password3));
+            System.out.println(SHA256EncryptionService.getService().encryptPassword(password1));
+            System.out.println(SHA256EncryptionService.getService().encryptPassword(password2));
+            System.out.println(SHA256EncryptionService.getService().encryptPassword(password3));
 
-            if(PasswordEncryptionService.getService().encryptPassword(password1).
-                    equals(PasswordEncryptionService.getService().encryptPassword(password3))){
+            if (SHA256EncryptionService.getService().encryptPassword(password1).
+                    equals(SHA256EncryptionService.getService().encryptPassword(password3))) {
                 System.out.println("PASS");
-            }else {
+            } else {
                 System.out.println("FAIL");
             }
         } catch (Exception e) {
