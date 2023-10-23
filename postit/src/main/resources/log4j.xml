@@ -1,0 +1,33 @@
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration debug="true">
+    <!--Console appender -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
+        </layout>
+    </appender>
+
+    <logger name="org.hibernate.SQL" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="stdout"/>
+    </logger>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="stdout"/>
+    </root>
+
+
+    <!--    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">-->
+    <!--        <layout class="org.apache.log4j.PatternLayout">-->
+    <!--            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>-->
+    <!--        </layout>-->
+    <!--    </appender>-->
+
+    <!--    <logger name="org.hibernate.SQL"/>-->
+
+    <!--    <root>-->
+    <!--        <level value="DEBUG"/>-->
+    <!--        <appender-ref ref="stdout"/>-->
+    <!--    </root>-->
+</log4j:configuration>

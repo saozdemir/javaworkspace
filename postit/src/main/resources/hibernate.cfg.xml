@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+
+        <!-- Assume test is the database name -->
+
+        <property name="hibernate.connection.url">
+            <!-- Cloud Database URL -->
+            jdbc:mysql://localhost/POSTIT_DB
+        </property>
+
+        <property name="hibernate.connection.username">
+            root
+        </property>
+
+        <property name="hibernate.connection.password">
+            root
+        </property>
+
+        <property name="connection.autocommit">true</property>
+
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="showsql">true</property>
+
+
+        <!-- List of XML mapping files -->
+<!--        <mapping resource="user.hbm.xml"/>-->
+<!--        <mapping resource="group.hbm.xml"/>-->
+<!--        <mapping resource="message.hbm.xml"/>-->
+
+
+    </session-factory>
+</hibernate-configuration>
