@@ -57,4 +57,8 @@ public class PnGridPaneButton extends GridPane {
             }
         }
     }
+
+    public Button getBtn1() {
+        return btn1;
+    }
 }

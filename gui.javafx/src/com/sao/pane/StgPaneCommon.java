@@ -1,5 +1,6 @@
 package com.sao.pane;
 
+import com.sao.CtrCommon;
 import com.sao.pane.borderpane.PnBorderPane;
 import com.sao.pane.flowpane.PnFlowPane;
 import com.sao.pane.gridpane.PnGridPane;
@@ -40,9 +41,16 @@ public class StgPaneCommon extends Stage {
     //private PnGridPane pnCommon = new PnGridPane();
     private PnGridPaneButton pnCommon = new PnGridPaneButton();
 
+    private CtrCommon controller;
+
 
     public StgPaneCommon() {
         init();
+        initController();
+    }
+
+    private void initController() {
+        controller = new CtrCommon(this);
     }
 
     private void init() {
@@ -54,5 +62,9 @@ public class StgPaneCommon extends Stage {
 //        this.setWidth(400);
 //        this.setHeight(400);
         this.show();
+    }
+
+    public PnGridPaneButton getPnCommon() {
+        return pnCommon;
     }
 }

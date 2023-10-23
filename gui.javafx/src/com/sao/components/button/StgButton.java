@@ -21,10 +21,14 @@ import javax.swing.*;
 public class StgButton extends Stage {
     private Button btnOk = new Button("Ok");
     private ToggleButton btnToggle = new ToggleButton("Switch");
+    private ToggleButton btnToggle2 = new ToggleButton("Switch2");
 
     private RadioButton btnMale = new RadioButton("Male");
     private RadioButton btnFemale = new RadioButton("Female");
     private ToggleGroup bgpGender = new ToggleGroup();
+
+    private ToggleGroup getBgpSwitch = new ToggleGroup();
+
 
     public StgButton() {
         init();
@@ -38,7 +42,11 @@ public class StgButton extends Stage {
         btnMale.setToggleGroup(bgpGender);
         btnFemale.setToggleGroup(bgpGender);
 
-        pane.getChildren().addAll(btnToggle, btnMale, btnFemale, btnOk);
+        btnToggle.setToggleGroup(getBgpSwitch);
+        btnToggle2.setToggleGroup(getBgpSwitch);
+        btnToggle2.setSelected(true);
+
+        pane.getChildren().addAll(btnToggle,btnToggle2, btnMale, btnFemale, btnOk);
         Scene scene = new Scene(pane, 400, 400);
 
         this.setTitle("Button Example");
@@ -54,7 +62,10 @@ public class StgButton extends Stage {
         icon.setFitHeight(24);
         icon.setFitWidth(24);
         btnOk.setGraphic(icon);
+        actions();
+    }
 
+    private void actions() {
 
     }
 }
