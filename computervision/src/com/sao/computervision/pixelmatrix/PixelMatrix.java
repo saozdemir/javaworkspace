@@ -57,6 +57,4 @@ public class PixelMatrix {
         HighGui.waitKey();
         HighGui.destroyAllWindows();
     }
-
-
 }
