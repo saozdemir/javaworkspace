@@ -6,6 +6,7 @@ import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 
 import java.awt.*;
+import java.net.URL;
 
 /**
  * @author Seyit Ahmet ÖZDEMİR
@@ -32,7 +33,10 @@ public class PixelMatrix {
     }
 
     private static void process() {
-        String imagePath = "C:\\Users\\xsaozdemir\\IdeaProjects\\javaworkspace\\computervision\\resources\\images\\100x100_color.png";
+        //String imagePath = "C:\\Users\\xsaozdemir\\IdeaProjects\\javaworkspace\\computervision\\resources\\images\\100x100_color.png";
+        //String imagePath = PixelMatrix.class.getResource("/images/100x100_color.png").getPath();
+        URL imageUrl = PixelMatrix.class.getResource("/images/100x100_color.png");
+        String imagePath = imageUrl.getPath().substring(1);
         Mat image = Imgcodecs.imread(imagePath);
         int rows = image.rows();
         int columns = image.cols();
