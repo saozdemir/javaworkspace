@@ -5,6 +5,8 @@ import org.opencv.core.Mat;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 
+import java.awt.*;
+
 /**
  * @author Seyit Ahmet ÖZDEMİR
  * @project com.sao.computervision.pixelmatrix javaworkspace
@@ -30,7 +32,7 @@ public class PixelMatrix {
     }
 
     private static void process() {
-        String imagePath = "E:\\IdeaProjects\\javaworkspace\\computervision\\resources\\images\\100x100_color.png";
+        String imagePath = "C:\\Users\\xsaozdemir\\IdeaProjects\\javaworkspace\\computervision\\resources\\images\\100x100_color.png";
         Mat image = Imgcodecs.imread(imagePath);
         int rows = image.rows();
         int columns = image.cols();
@@ -39,7 +41,7 @@ public class PixelMatrix {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 double[] pixel = image.get(i, j);
-                System.out.println("Pixel (" + i + ", " + j + "): " + "[" + pixel[0] + ", " + pixel[1] + ", " + pixel[2] + "]");//pixel[0]:R, pixel[1]:G, pixel[2]:B,
+                System.out.println("Pixel (" + i + ", " + j + "): " + "[" + pixel[2] + ", " + pixel[1] + ", " + pixel[0] + "]");//pixel[0]:B, pixel[1]:G, pixel[2]:R,
             }
         }
         showImage(image);
