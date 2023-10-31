@@ -61,7 +61,15 @@ public class Main {
         /**
          * Functiona Interface yardımı ile oluşturulmuş bir lambda expression ifadesi
          */
-        int result = calculator((a,b) -> a + b, 5, 2);
+        int result = calculator((a, b) -> a + b, 5, 2);
+        var result2 = calculator((a, b) -> a / b, 10.0, 2.5);
+
+        //Sadece sayı değil benzer işlemleri String ile de yapabilir.
+        var result3 = calculator((a, b) -> a.toUpperCase() + " " + b.toUpperCase(), "Cat", "Dog");
+
+        //return ifadesi küme parantezi ile kullanılabilir ancak sona ";" eklenmeli
+        var result4 = calculator((a, b) -> {return a * b;}, 7, 8);
+
     }
 
     public static <T> T calculator(Operation<T> function, T value1, T value2) {
