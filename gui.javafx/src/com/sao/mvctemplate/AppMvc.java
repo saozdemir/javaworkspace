@@ -12,6 +12,7 @@ import javafx.stage.Stage;
  * @description: Uygulamayı çalıştıran App sınıfı StgMvcTemplate() sınfını çağırarak uygulamayı başlatır
  */
 public class AppMvc extends Application {
+
     public static void main(String[] args) {
         launch(args);
     }
