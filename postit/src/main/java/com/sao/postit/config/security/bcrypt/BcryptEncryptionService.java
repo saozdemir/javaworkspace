@@ -5,7 +5,7 @@ import org.mindrot.bcrypt.BCrypt;
 /**
  * @author saozd
  * @project com.sao.postit.config.security.bcrypt javaworkspace
- * @date 24.10.2023 Eki 2023
+ * @date 10.11.2023 Kas 2023
  * <p>
  * @description:
  */
