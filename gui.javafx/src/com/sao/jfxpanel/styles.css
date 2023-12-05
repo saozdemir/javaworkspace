@@ -1,0 +1,5 @@
+.vbox-background {
+    -fx-background-color: #336699; /* Arkaplan rengi */
+    -fx-background-radius: 10;   /* Köşe yuvarlama (isteğe bağlı) */
+    -fx-padding: 10;             /* Kenar boşluğu (isteğe bağlı) */
+}
