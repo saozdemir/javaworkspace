@@ -1,0 +1,35 @@
+{
+   "action": {
+      "default_icon": {
+         "16": "icon.png",
+         "24": "icon.png",
+         "32": "icon.png"
+      },
+      "default_popup": "popup.html"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [ {
+      "js": [ "contentScript.js" ],
+      "matches": [ "https://*.udemy.com/course/*/learn/*", "https://learn.udacity.com/*", "https://www.youtube.com/*" ]
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_appDesc__",
+   "icons": {
+      "128": "icon.png",
+      "16": "icon.png",
+      "48": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqPubaf5GlI3XI9tJlqW5iZYew6CEEe23tuqwCisTyAOr1yXbQxH1ULEMjGAZdJ2QRbVyBNWDaNEMGbUaD4mHULiL3QeR3MuWyU4t75u/wRq0JoYgOFBAhCuFIYw/DAC66FkaDPHidClZdX4tFZ7D38GnbP2odiSScHFVrat+/T4gAAlACkUsDungzmo4khizma5e9F8c/4yASbmUAaQlftL3cZRUym371LCLVEn6ZrfrN9t2kYGWpZfA/idHQ7g8qvdlCRu/D8G6NKJ146VsBhqJs9el40jXO+ksvfOlRvcVovMFobA/zrz13c5PcZ0e/PH1foPT+dzfL5UTxOi0vQIDAQAB",
+   "manifest_version": 3,
+   "name": "__MSG_appName__",
+   "options_page": "options.html",
+   "permissions": [ "storage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.3.2",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "options.html" ]
+   } ]
+}
