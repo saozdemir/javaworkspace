@@ -26,12 +26,12 @@ public class BcryptEncryptionService {
         return service;
     }
 
-    public String encryptPassword(String password) {
+    public final String encryptPassword(String password) {
         String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         return encryptedPassword;
     }
 
-    public boolean checkPassword(String password, String encryptedPassword) {
+    public final boolean checkPassword(String password, String encryptedPassword) {
         if (BCrypt.checkpw(password, encryptedPassword)) {
             return true;
         }

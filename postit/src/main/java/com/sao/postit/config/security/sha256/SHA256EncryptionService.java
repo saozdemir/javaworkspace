@@ -32,7 +32,7 @@ public class SHA256EncryptionService{
         return service;
     }
 
-    public String encryptPassword(String password) {
+    public final String encryptPassword(String password) {
         byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
         String encryptedPassword = bytesToHex(hashBytes);
         return encryptedPassword;

@@ -36,14 +36,14 @@ public class AesEncryptionService {
         return service;
     }
 
-    public String encrypt(String plaintext) throws Exception {
+    public final String encrypt(String plaintext) throws Exception {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
         byte[] encryptedBytes = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
         return Base64.getEncoder().encodeToString(encryptedBytes);
     }
 
-    public String decrypt(String ciphertext) throws Exception {
+    public final String decrypt(String ciphertext) throws Exception {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
         byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(ciphertext));
