@@ -22,11 +22,17 @@ public class DatabaseService<T> {
 
     public DatabaseService() {
         BasicConfigurator.configure();
+        createService();
     }
 
     private void createService() {
-        session = DatabaseSession.getSessionFactory().openSession();
-        transaction = session.beginTransaction();
+        if(session == null){
+            session = DatabaseSession.getSessionFactory().openSession();
+        }
+        if(transaction == null){
+            transaction = session.beginTransaction();
+        }
+
     }
 
     public boolean insertObject(Object object) {
@@ -109,5 +115,13 @@ public class DatabaseService<T> {
             }
         }
         return results != null ? results : new ArrayList<>();
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public Transaction getTransaction() {
+        return transaction;
     }
 }
