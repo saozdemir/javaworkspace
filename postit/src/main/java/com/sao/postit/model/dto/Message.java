@@ -21,6 +21,7 @@ public class Message {
     private String title;
 
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "FILE")
     private Blob file;
 
