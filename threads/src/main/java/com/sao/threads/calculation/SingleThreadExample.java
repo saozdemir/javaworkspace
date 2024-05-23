@@ -9,53 +9,28 @@ package com.sao.threads.calculation;
  */
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
-public class PlatformThreadExample {
+public class SingleThreadExample {
     public static void main(String[] args) {
         List<Personel> personelList = Personel.generatePersonelList(10000); // Daha büyük iş yükü için 10,000 elemanlı liste
-        int chunkSize = 50; // Daha büyük iş yükü için 1000'lik parçalar
-
-        List<List<Personel>> chunks = new ArrayList<>();
-        for (int i = 0; i < personelList.size(); i += chunkSize) {
-            chunks.add(personelList.subList(i, Math.min(personelList.size(), i + chunkSize)));
-        }
-
-        ExecutorService executor = Executors.newFixedThreadPool(chunks.size());
-        List<Callable<List<double[]>>> tasks = new ArrayList<>();
-
-        for (List<Personel> chunk : chunks) {
-            tasks.add(() -> calculateWorkHours(chunk));
-        }
 
         try {
             long startTime = System.currentTimeMillis();
             long initialMemoryUsage = getMemoryUsage();
             int initialOSThreadCount = ThreadUtil.getOSThreadCount();
-            System.out.println("Initial OS Thread Count: " + initialOSThreadCount);
+            List<double[]> results = calculateWorkHours(personelList);
 
-            List<Future<List<double[]>>> results = executor.invokeAll(tasks);
-            List<double[]> finalResults = new ArrayList<>();
-            for (Future<List<double[]>> result : results) {
-                finalResults.addAll(result.get());
-            }
             int finalOSThreadCount = ThreadUtil.getOSThreadCount();
             System.out.println("Final OS Thread Count: " + finalOSThreadCount);
 
             long endTime = System.currentTimeMillis();
             long finalMemoryUsage = getMemoryUsage();
 
-            System.out.println("Platform Threads - Total time: " + (endTime - startTime) + " ms");
-            System.out.println("Memory Usage Difference for Platform Threads: " + (finalMemoryUsage - initialMemoryUsage) + " bytes");
+            System.out.println("Single Thread - Total time: " + (endTime - startTime) + " ms");
+            System.out.println("Memory Usage Difference for Single Thread: " + (finalMemoryUsage - initialMemoryUsage) + " bytes");
             System.out.println("Used OS Threads: " + (finalOSThreadCount - initialOSThreadCount));
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            executor.shutdown();
         }
     }
 
@@ -82,5 +57,4 @@ public class PlatformThreadExample {
         return runtime.totalMemory() - runtime.freeMemory();
     }
 }
-
 
