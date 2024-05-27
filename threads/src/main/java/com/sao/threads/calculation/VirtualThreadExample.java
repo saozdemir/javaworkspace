@@ -16,8 +16,33 @@ import java.util.concurrent.Future;
 
 public class VirtualThreadExample {
     public static void main(String[] args) {
+        /**
+         * int logicalCpuCores = Runtime.getRuntime().availableProcessors() * 2; kodunda 2 değerinin alınmasının nedeni, sistemdeki CPU çekirdeklerinin hiper iş parçacıkları (hyper-threading) ile birlikte nasıl kullanılacağını optimize etmektir. Hiper iş parçacıkları, her fiziksel çekirdeğin iki mantıksal çekirdek olarak çalışmasını sağlar, bu da CPU kaynaklarının daha verimli kullanılmasına yardımcı olur. Ancak bu sabit 2 değeri belirli bir kural değildir ve farklı durumlarda, iş yüküne ve sistem kaynaklarına bağlı olarak değiştirilebilir. Örneğin, 4 veya 8 gibi farklı çarpanlar da kullanılabilir.
+         *
+         * Neden 2 Değeri Kullanılır?
+         * Hiper İş Parçacıkları: Birçok modern CPU, hiper iş parçacıklarını destekler, bu da her fiziksel çekirdeğin iki mantıksal çekirdek gibi çalışabileceği anlamına gelir. Bu nedenle, sistemin sahip olduğu fiziksel çekirdek sayısının iki katı mantıksal çekirdek olarak kullanılabilir.
+         * Standart Optimizasyon: Çoğu durumda, bu çarpan 2, hiper iş parçacıklarını tam olarak kullanmak için yeterlidir ve CPU-bound iş yüklerini verimli bir şekilde yönetmek için iyi bir başlangıç noktasıdır.
+         * Alternatif Değerler Kullanılabilir mi?
+         * Evet, 2 dışında farklı çarpanlar kullanmak da mümkündür ve belirli senaryolarda faydalı olabilir. İşte bazı örnekler:
+         *
+         * 1 Değeri:
+         *
+         * Nerede Kullanılır: Hiper iş parçacıklarının kullanılmadığı veya her iş parçacığının tam bir çekirdeğe ihtiyaç duyduğu durumlarda.
+         * Örnek: int logicalCpuCores = Runtime.getRuntime().availableProcessors();
+         * 4 veya 8 Değeri:
+         *
+         * Nerede Kullanılır: I/O-bound iş yüklerinin çok fazla olduğu veya çok sayıda iş parçacığı oluşturmanın sistem kaynaklarını aşırı kullanmayacağı durumlarda.
+         * Örnek: int logicalCpuCores = Runtime.getRuntime().availableProcessors() * 4;
+         * Dinamik Ayarlar:
+         *
+         * Nerede Kullanılır: Sistemin iş yükü türüne bağlı olarak, dinamik olarak çarpan değerini ayarlamak isteyebilirsiniz. Örneğin, belirli bir iş yükü altında performans testi yaparak en uygun değeri belirleyebilirsiniz.
+         */
+        int logicalCpuCores = Runtime.getRuntime().availableProcessors() * 2; // Mantıksal çekirdek sayısı(Hyper-threading ile her fiziksel çekirdek, iki mantıksal çekirdek gibi çalışır. Intel patentli)
+        int kFactor = 2;
+        int chunkSize = 10000 / (logicalCpuCores * kFactor);
+
         List<Personel> personelList = Personel.generatePersonelList(10000); // Daha büyük iş yükü için 10,000 elemanlı liste
-        int chunkSize = 50; // Daha büyük iş yükü için 1000'lik parçalar
+        //int chunkSize = 625; // Daha büyük iş yükü için 1000'lik parçalar
 
         List<List<Personel>> chunks = new ArrayList<>();
         for (int i = 0; i < personelList.size(); i += chunkSize) {
@@ -65,7 +90,7 @@ public class VirtualThreadExample {
             for (int i = 0; i < daysArray.length; i++) {
                 workHours[i] = personel.getTotalWorkHours(daysArray[i]);
                 // Ekstra iş yükü oluşturmak için yapay bir hesaplama ekliyoruz
-                for (int j = 0; j < 10000; j++) {
+                for (int j = 0; j < 1000; j++) {
                     workHours[i] += Math.sin(workHours[i] * j);
                 }
             }

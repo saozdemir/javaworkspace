@@ -7,6 +7,7 @@ package com.sao.threads.calculation;
  * <p>
  * @description:
  */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -17,8 +18,21 @@ import java.util.concurrent.Future;
 
 public class PlatformThreadExample {
     public static void main(String[] args) {
+        /**
+         * Virtual thread'ler ve platform thread'ler için farklı CPU çekirdeği hesaplamalarının nedeni,
+         * virtual thread'lerin donanım seviyesinde daha az bağımlı olmasıdır.
+         * Platform thread'leri (OS thread'leri) doğrudan fiziksel ve mantıksal çekirdekler üzerinde çalışırken,
+         * virtual thread'ler daha hafif iş parçacıklarıdır ve JVM tarafından yönetilir.
+         * Bu nedenle, virtual thread'ler için daha fazla paralellik oluşturmak amacıyla,
+         * çekirdek sayısını ikiyle çarparak daha fazla sanal iş parçacığı oluşturulur.
+         * Bu, sistemin hiper iş parçacıklarını (hyper-threading) ve ek paralel işleme kapasitesini daha iyi kullanmasına yardımcı olur.
+         */
+        int cpuCores = Runtime.getRuntime().availableProcessors();
+        int kFactor = 2;
+        int chunkSize = 10000 / (cpuCores * kFactor);
+
         List<Personel> personelList = Personel.generatePersonelList(10000); // Daha büyük iş yükü için 10,000 elemanlı liste
-        int chunkSize = 50; // Daha büyük iş yükü için 1000'lik parçalar
+        //int chunkSize = 625; // Daha büyük iş yükü için 1000'lik parçalar
 
         List<List<Personel>> chunks = new ArrayList<>();
         for (int i = 0; i < personelList.size(); i += chunkSize) {
@@ -67,7 +81,7 @@ public class PlatformThreadExample {
             for (int i = 0; i < daysArray.length; i++) {
                 workHours[i] = personel.getTotalWorkHours(daysArray[i]);
                 // Ekstra iş yükü oluşturmak için yapay bir hesaplama ekliyoruz
-                for (int j = 0; j < 10000; j++) {
+                for (int j = 0; j < 1000; j++) {
                     workHours[i] += Math.sin(workHours[i] * j);
                 }
             }

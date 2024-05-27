@@ -42,7 +42,7 @@ public class SingleThreadExample {
             for (int i = 0; i < daysArray.length; i++) {
                 workHours[i] = personel.getTotalWorkHours(daysArray[i]);
                 // Ekstra iş yükü oluşturmak için yapay bir hesaplama ekliyoruz
-                for (int j = 0; j < 10000; j++) {
+                for (int j = 0; j < 1000; j++) {
                     workHours[i] += Math.sin(workHours[i] * j);
                 }
             }
