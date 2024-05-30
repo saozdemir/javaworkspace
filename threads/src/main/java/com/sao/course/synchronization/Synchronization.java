@@ -59,8 +59,23 @@ public class Synchronization {
 
         Object lock = new Object();
 
+        /**
+         * Burada eğer
+         * public synchronized void increment()
+         * public synchronized void decrement()
+         * public synchronized int getItems() şeklinde tanımlama yapılmış olsaydı, bir thread bu metotardan herhangi birine
+         * girdiinde diğer threadlerin tüm synchronized metotlara erişimi locklanmış olurdu.
+         * Bir bağlamda sigle thread gibi çalışırdı.
+         *
+         * Ancak
+         * Object lock = new Object();
+         * ...
+         * synchronized (this.lock) {
+         *                 items--;
+         * } şeklinde kullanım ile sadece ilgili kod satırı için locklama yapılır. Bu durumda diğer metotları farklı threadler kullanabilir.
+         */
         public void increment() {
-            synchronized (this.lock) {
+            synchronized (this.lock) { //Bir thread bu kod satırını kullanırken diğer threadlerin bu alana erişimini engeller.
                 items++;
             }
         }

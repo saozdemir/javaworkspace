@@ -1,5 +1,7 @@
 package com.sao.threads.comparator;
 
+import com.sao.threads.dummy.ThreadWork;
+
 import java.util.List;
 
 /**
@@ -21,6 +23,21 @@ public class ThreadManagerPlatform implements Runnable{
         for (ThreadWorker work : platformThreadPool){
             new Thread(work).start();
         }
+
+        boolean isFinished = false;
+
+        while (!isFinished){
+            isFinished = true;
+            for (ThreadWorker work : platformThreadPool){
+                isFinished = isFinished && work.isFinished;
+            }
+//            try {
+//                sleep(100);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+        }
+        System.out.println("Finished Process");
 
 //        for (ThreadWorker work : platformThreadPool) {
 //            try {

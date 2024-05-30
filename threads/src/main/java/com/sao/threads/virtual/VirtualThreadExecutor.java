@@ -17,7 +17,7 @@ public class VirtualThreadExecutor {
         long startTime = System.nanoTime();
         for (int j = 0; j < 25; j++) {
             try (ExecutorService service = Executors.newVirtualThreadPerTaskExecutor()) {
-                IntStream.range(0, 10_000).forEach(i -> {
+                IntStream.range(0, 100).forEach(i -> {
                     service.submit(() -> {
                         Thread.sleep(Duration.ofSeconds(1));
                         return i;

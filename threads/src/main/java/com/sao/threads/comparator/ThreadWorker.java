@@ -8,6 +8,8 @@ package com.sao.threads.comparator;
  * @description:
  */
 public class ThreadWorker implements Runnable {
+    boolean isFinished = false;
+    Exception exception;
     @Override
     public void run() {
         try {
@@ -16,5 +18,13 @@ public class ThreadWorker implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isFinished() {
+        return isFinished;
+    }
+
+    public Exception getException() {
+        return exception;
     }
 }

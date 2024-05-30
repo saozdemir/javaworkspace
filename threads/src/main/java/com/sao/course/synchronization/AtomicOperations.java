@@ -73,7 +73,8 @@ public class AtomicOperations {
 
     public static class Metrics {
         private long count = 0;
-        private volatile double average = 0.0;
+        private volatile double average = 0.0;//Atomik olduğu garanti edildi.
+//        private volatile double average = 0.0;
 
         public synchronized void addSample(long sample) {
             double currentSum = average * count;
