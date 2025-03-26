@@ -1,0 +1,30 @@
+------------------------------------------------------------------------------------------------------------------------
+JAVA STREAM API
+------------------------------------------------------------------------------------------------------------------------
+Veri işlemeye yarayan yapıdır.
+Veriyapısı değildir.
+Kaynağı değiştirmez ama üzerinde işlem yaparlar.
+
+Pirmitive tip olduğu gibi Generic olarka da tanımlanabilr.
+
+Ardışık ve Parelel olarak çalışabilir.
+
+
+Çaşışma Mantığı
+
+Bir akışın işlenmesi 3 adımda gerçekleşir. (streams.png)
+1- Akışın oluşturulması
+2- Akışın işlemler vasıtasıyla 0 yada daha fazla kere işlenmesi
+3- Akışın bitirici bir son işlemle kapatılması
+
+            1.                              2.                              3.
+    +--------------------+          +--------------------+          +--------------------+
+    |  Stream Source     |          |  Intermediate Ops  |          |  Terminal Ops      |
+    |  Arrays.stream();  |    =>    |  map();            |   =>     |  foreach();        |
+    |  List.stream();    |          |  filter();         |          |  sum();            |
+    |                    |          |                    |          |  collect();        |
+    +--------------------+          +--------------------+          +--------------------+
+
+
+
+    Stream kaynakları: Dizi, Liste vb. dir.
